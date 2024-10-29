@@ -38,32 +38,32 @@ class Solution
 	{
 		Scanner sc = new Scanner(System.in);
 
-		int T = sc.nextInt();
+        int T = sc.nextInt();
 
-		for (int tc = 1; tc <= T; tc++) {
+        for (int tc = 1; tc <= T; tc++) {
 
-			int N = sc.nextInt();
-			int mid = N / 2;
-			int sum = 0;
+            int a = sc.nextInt();
+            sc.nextLine();
+            int[][] farm = new int[a][a];
 
-			int[][] farm = new int[N][N];
+            for (int i = 0; i < a; i++) {
+                String str = sc.nextLine();
+                for (int j = 0; j < a; j++) {
+                    farm[i][j] = str.charAt(j) - '0';
+                }
+            }
 
-			for (int i = 0; i < N; i++) {
-				String row = sc.next();
-				for (int j = 0; j < N; j++) {
-					farm[i][j] = row.charAt(j) - '0';
-				}
-			}
+            int sum = 0;
 
-			for (int i = 0; i < N; i++) {
-				int s = Math.abs(mid - i);
-				int e = N - Math.abs(mid - i);
-				for (int j = s; j < e; j++) {
-					sum += farm[i][j];
-				}
+            for (int i = 0; i < a; i++) {
+                int s = Math.abs(a / 2 - i);
+                int e = a - Math.abs(a / 2 - i);
+                for (; s < e; s++) {
+                    sum += farm[i][s];
+                }
+            }
 
-			}
-			System.out.println("#" + tc + " " + sum);
-		}
+            System.out.println("#" + tc + " " + sum);
+        }
 	}
 }
