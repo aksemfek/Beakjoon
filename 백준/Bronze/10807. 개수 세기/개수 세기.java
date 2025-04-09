@@ -1,22 +1,32 @@
 import java.io.*;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] array = new int[n];
-        int k =0;
-        for (int i=0; i<n; i++){
-            array[i] = scanner.nextInt();
-        }
-        int n1 = scanner.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        for (int a : array){
-            if (a==n1){
-                k++;
+        int T = Integer.parseInt(br.readLine());
+        String[] input = br.readLine().split(" ");
+        int[] arr = new int[input.length];
+        for(int i = 0; i < T; i++) {
+            arr[i] = Integer.parseInt(input[i]);
+        }
+        int N = Integer.parseInt(br.readLine());
+
+        int count = 0;
+
+        for(int i = 0; i < T; i++) {
+            if(arr[i] == N) {
+                count++;
             }
         }
-        System.out.println(k);
+        System.out.println(count);
+
+
+
+        bw.flush();
+        bw.close();
+
+
     }
 }
