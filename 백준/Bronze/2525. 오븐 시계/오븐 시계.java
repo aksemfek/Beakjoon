@@ -1,26 +1,27 @@
-import java.util.Scanner;
+import java.io.*;
+
 public class Main {
-	
-	private static Scanner scanner = new Scanner(System.in);
-	
-	
-	public static void main(String[] args) {
-		
-		int A = scanner.nextInt();
-	    int B = scanner.nextInt();
-	    int C = scanner.nextInt();
-	    
-	    A += C/60;
-	    B += C%60;
-	      
-	    if(B>=60) {
-	        A++;
-	        B-=60;
-	      }
-	    if(A>=24) {
-	       A-=24;
-	    }
-	    System.out.println(A + " " +B);
-	     
-	}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] input = br.readLine().split(" ");
+        int n1 = Integer.parseInt(input[0]);
+        int n2 = Integer.parseInt(input[1]);
+        int n3 = Integer.parseInt(br.readLine());
+
+        int seconds = (n2+n3)/60;
+        int minutes = (n2+n3)%60;
+        int hours = n1+ seconds;
+
+        if(hours>23){
+            hours= hours-24;
+        }
+        bw.write(hours + " " + minutes);
+
+        bw.flush();
+        bw.close();
+
+
+    }
 }
