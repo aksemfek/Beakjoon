@@ -1,22 +1,26 @@
-import java.util.Scanner;
+import java.io.*;
+
 public class Main {
-	
-	private static Scanner scanner = new Scanner(System.in);
-	
-	
-	public static void main(String[] args) {
-		
-		int A = scanner.nextInt();
-		int B = scanner.nextInt();
-		
-		if (A > B) {
-			System.out.println(">");
-		}
-		else if(A<B) {
-			System.out.println("<");
-		}
-		else {
-			System.out.println("==");
-		}
-	}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] input = br.readLine().split(" ");
+        int n1 = Integer.parseInt(input[0]);
+        int n2 = Integer.parseInt(input[1]);
+
+        if(n1> n2){
+            bw.write(">");
+        } else if (n1 < n2) {
+            bw.write("<");
+        }else {
+            bw.write("==");
+        }
+
+
+        bw.flush();
+        bw.close();
+
+
+    }
 }
