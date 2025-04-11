@@ -1,18 +1,19 @@
-import java.util.Scanner;
-
+import java.io.*;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
+        String S = br.readLine();
 
-        String[] str1 = str.trim().split("\\s+");
-        int count = 0;
-        for (String str2 : str1) {
-            if (!str2.isEmpty()) {
-                count++;
-            }
+        if (S.trim().equals("")) {
+            bw.write("0");
+        } else {
+            String[] arr = S.trim().split("\\s+");
+            bw.write(arr.length + "");
         }
-        System.out.println(count);
+
+        bw.flush();
+        bw.close();
     }
 }
