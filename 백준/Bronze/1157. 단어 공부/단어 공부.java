@@ -1,29 +1,31 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine().toUpperCase();
+        String word = br.readLine().toUpperCase();
+        int[] wordCount = new int[26];
 
-        int[] arr = new int[26];
+        for (int i = 0; i < word.length(); i++) {
+            wordCount[word.charAt(i) - 'A']++;
+        }
 
-        for(int i = 0; i < str.length(); i++){
-            if('A' <=str.charAt(i) && str.charAt(i)<='Z'){
-                arr[str.charAt(i)-'A']++;
+        int max = 0;
+        char result = '?';
+
+        for (int i = 0; i < wordCount.length; i++) {
+            if (wordCount[i] > max) {
+                max = wordCount[i];
+                result = (char) ('A' + i);
+            } else if (max == wordCount[i]) {
+                result = '?';
             }
         }
-        int max =-1;
-        char ch= '?';
 
-        for(int i = 0; i<arr.length;i++){
-            if(max<arr[i]){
-                max=arr[i];
-                ch = (char)(i+65);
-            }else if(max == arr[i]){
-                ch='?';
-            }
-        }
-        System.out.println(ch);
+        bw.write(result);
+        bw.flush();
+        bw.close();
     }
 }
