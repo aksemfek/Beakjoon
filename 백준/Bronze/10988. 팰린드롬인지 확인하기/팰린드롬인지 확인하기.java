@@ -1,20 +1,24 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Scanner scanner = new Scanner(System.in);
-        String palindrome = scanner.nextLine();
+        String palworld = br.readLine();
         String reverse = "";
 
-        for(int i=palindrome.length()-1 ;i>=0; i--){
-            reverse += palindrome.charAt(i);
+        for (int i = palworld.length() - 1; i >= 0; i--) {
+            reverse += palworld.charAt(i);
         }
 
-        if(palindrome.equals(reverse)){
-            System.out.println("1");
-        }else{
-            System.out.println("0");
+        if (palworld.equals(reverse)) {
+            bw.write("1");
+        } else {
+            bw.write("0");
         }
+        
+        bw.flush();
+        bw.close();
     }
 }
