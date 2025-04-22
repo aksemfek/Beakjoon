@@ -1,28 +1,27 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        br.readLine();
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+
+        String[] numbers = br.readLine().split(" ");
+
         int count = 0;
 
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        for (int i = 0; i < N; i++) {
+            int num = Integer.parseInt(numbers[i]);
 
-        while (st.hasMoreTokens()) {
+            if (num == 1) continue;
+
             boolean isPrime = true;
 
-            int num = Integer.parseInt(st.nextToken());
+            for (int j = 2; j <= Math.sqrt(num); j++) {
 
-            if (num == 1) {
-                continue;
-            }
-
-            for (int i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i == 0) {
+                if (num % j == 0) {
                     isPrime = false;
                     break;
                 }
@@ -31,6 +30,9 @@ public class Main {
                 count++;
             }
         }
-        System.out.println(count);
+
+        bw.write(count + "\n");
+        bw.flush();
+        bw.close();
     }
 }
