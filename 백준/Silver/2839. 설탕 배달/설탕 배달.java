@@ -1,20 +1,25 @@
 import java.io.*;
+import java.util.Arrays;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        if(N == 4 || N == 7){
-            System.out.println("-1");
-        } else if (N % 5 == 0) {
-            System.out.println(N/5);
-        } else if (N % 5 == 1 || N % 5 == 3) {
-            System.out.println((N / 5) + 1);
-        } else if (N % 5 == 2 || N % 5 == 4) {
-            System.out.println((N / 5) + 2);
+        int N = Integer.parseInt(br.readLine());
+        int suc = -1;
+        for (int i = N / 5; i >= 0; i--) {
+            int remain = N - (i * 5);
+            if (remain % 3 == 0) {
+                suc = i + (remain / 3);
+                break;
+            }
         }
+
+        bw.write(suc + "\n");
+
+
+        bw.flush();
+        bw.close();
     }
 }
